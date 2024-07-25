@@ -1,15 +1,6 @@
 #!/usr/bin/python3
 """
 Pascal's Triangle Generator
-
-This module provides a function to generate Pascal's Triangle up to n rows.
-Pascal's Triangle is a triangular array of the binomial coefficients that arises
-in probability theory, combinatorics, and algebra.
-
-Function:
-    pascal_triangle(n): Returns a list of lists representing Pascal's Triangle.
-
-Each number is the sum of the two numbers directly above it.
 """
 
 def pascal_triangle(n):
