@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-
 def canUnlockAll(boxes):
     n = len(boxes)
-    unlocked = [False] * n
-    unlocked[0] = True
+    unlocked = set()
     keys = [0]
 
     while keys:
         current_key = keys.pop()
-        for key in boxes[current_key]:
-            if key < n and not unlocked[key]:
-                unlocked[key] = True
-                keys.append(key)
+        if current_key not in unlocked:
+            unlocked.add(current_key)
+            for key in boxes[current_key]:
+                if key not in unlocked and key < n:
+                    keys.append(key)
     
-    return all(unlocked)
+    return len(unlocked) == n
 
 # Test cases
 if __name__ == "__main__":
