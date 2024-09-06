@@ -3,33 +3,28 @@
 Lockboxes module
 """
 
+
 def canUnlockAll(boxes):
     """
-    Determines if all boxes can be opened
-    :param boxes: list of lists where each sublist contains keys to other boxes
-    :return: True if all boxes can be opened, False otherwise
+    Determines if all boxes can be opened.
+
+    Args:
+        boxes: A list of lists, where each inner list represents a box
+               containing keys to other boxes.
+
+    Returns:
+        True if all boxes can be opened, False otherwise.
     """
     n = len(boxes)
-    visited = set([0])  # Mark the first box as visited
-    queue = [0]  # Start with the first box
+    visited = set([0])  # Start with the first box unlocked
+    queue = [0]  # Initialize a queue with the first box
 
     while queue:
-        current_box = queue.pop(0)
+        current_box = queue.pop(0)  # Get the first box from the queue
 
         for key in boxes[current_box]:
-            if key < n and key not in visited:
-                visited.add(key)
-                queue.append(key)
+            if key < n and key not in visited:  # Check if the key is valid
+                visited.add(key)  # Mark the box as visited
+                queue.append(key)  # Add the box to the queue
 
-    return len(visited) == n
-
-# Code for testing the function
-if __name__ == "__main__":
-    boxes = [[1], [2], [3], [4], []]
-    print(canUnlockAll(boxes))  # True
-
-    boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
-    print(canUnlockAll(boxes))  # True
-
-    boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
-    print(canUnlockAll(boxes))  # False
+    return len(visited) == n  # Check if all boxes have been visited
