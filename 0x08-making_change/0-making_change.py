@@ -1,34 +1,37 @@
 #!/usr/bin/python3
 """
-Module for making change using a greedy algorithm
+Determine the fewest number of coins needed to meet a given amount total
 """
+total1 = 37
+list_of_coins1 = [1, 2, 25]
 
+#total2 = 1453
+#list_of_coins2 = [1256, 54, 48, 16, 102]
 
 def makeChange(coins, total):
-    """
-    Determines the fewest number of coins needed to meet a given total
-
-    Args:
-    coins (list of int): list of coin denominations
-    total (int): target amount
-
-    Returns:
-    int: fewest number of coins needed to meet total, -1 if not possible
-    """
     if total <= 0:
         return 0
 
-    # Sort coins in descending order
-    coins.sort(reverse=True)
+    remainder = total  # 37
 
-    coin_count = 0
-    for coin in coins:
-        if total >= coin:
-            # Use as many of this coin as possible
-            coin_count += total // coin
-            total = total % coin
+    coins_needed = 0
 
-        if total == 0:
-            return coin_count
+    coin_index = 0
 
-    return -1
+    sorted_coins_list = sorted(coins, reverse=True)
+    # [25, 2, 1]
+
+    list_len = len(coins)  # 3
+
+    while remainder > 0:  # 0
+
+        if coin_index >= list_len:  # index 1 < 3
+            return -1
+
+        if remainder - sorted_coins_list[coin_index] >= 0:  # 2 - 2 = 0
+            remainder -= sorted_coins_list[coin_index]  # 0
+
+            coins_needed += 1  # 1
+        else:
+            coin_index += 1
+    return coins_needed  # 7
