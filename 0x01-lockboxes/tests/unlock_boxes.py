@@ -1,29 +1,12 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-""" a method that determines if all boxes can be opened """
-=======
 
 """
 This module contains the solution to the
 Inteview question of lockboxes
 """
->>>>>>> 2a141a58134ea3aaf298a73257c5f20bf4c94640
 
 from typing import List
 
-<<<<<<< HEAD
-def canUnlockAll(boxes):
-    """ a method that determines if all boxes can be opened """
-    unlocked = {0}
-    stack = [0]
-    while stack:
-        current_box = stack.pop()
-        for key in boxes[current_box]:
-            if key < len(boxes) and key not in unlocked:
-                unlocked.add(key)
-                stack.append(key)
-    return len(unlocked) == len(boxes)
-=======
 
 def canUnlockAll(boxes: List[List]) -> bool:
     """
@@ -46,4 +29,3 @@ def canUnlockAll(boxes: List[List]) -> bool:
         if i not in key_list:
             return False
     return True
->>>>>>> 2a141a58134ea3aaf298a73257c5f20bf4c94640
